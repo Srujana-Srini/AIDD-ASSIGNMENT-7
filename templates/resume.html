@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume · Srujana Srinivasan</title>
+  <meta name="description" content="Srujana Srinivasan — portfolio, resume, projects, and contact.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Home">
+        <span class="brand-logo" aria-hidden="true">SS</span>
+        <span class="brand-text">Srujana Srinivasan</span>
+      </a>
+      <nav aria-label="Primary">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">Menu</button>
+        <ul id="primary-menu" class="nav-list">
+<li><a href="{{ url_for('home') }}">Home</a></li>
+<li><a href="{{ url_for('about') }}">About Me</a></li>
+<li><a href="{{ url_for('resume') }}">Resume</a></li>
+<li><a href="{{ url_for('projects') }}">Projects</a></li>
+<li><a href="{{ url_for('contact') }}">Contact</a></li>
+</ul>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    
+<article class="prose">
+  <div class="section-title">
+    <img src="{{ url_for('static', filename='images/') }}sparkle.svg" alt="" aria-hidden="true">
+    <h1>Resume 💼</h1>
+  </div>
+
+  <section class="section">
+    <h2>🎓 Education</h2>
+    <ul class="timeline">
+      <li>
+        <div><strong>Indiana University, Kelley School of Business</strong> — MSIS (STEM)</div>
+        <div class="meta">Bloomington, IN · Dec 2026 · GPA: 3.70/4.00</div>
+        <div class="desc">Graduate Assistantship &amp; Dean’s Fellowship. Director of Communications — Digital Transformation &amp; AI Club; MSIS Student Ambassador.</div>
+      </li>
+      <li>
+        <div><strong>Anna University, SSN College of Engineering</strong> — B.Tech, Information Technology</div>
+        <div class="meta">Chennai, India · May 2025 · GPA: 3.50/4.00</div>
+        <div class="desc">Core committee at GDSC and IEEE-CS student chapters.</div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>🧑‍💻 Experience</h2>
+    <ul class="timeline">
+      <li>
+        <div><strong>DataTerrain — Product Strategy Intern</strong></div>
+        <div class="meta">Palo Alto, CA · Feb 2024 – Oct 2024</div>
+        <ul>
+          <li>Defined product requirements for <em>Medecode</em>, a machine learning tool standardizing medical documents &amp; mapping to diagnosis codes, improving insurance reporting accuracy by <strong>23%</strong> and enabling automation.</li>
+          <li>Presented product vision, roadmap, and value proposition of Medecode insurance verification system to executives as part of a broader go-to-market strategy.</li>
+          <li>Performed market &amp; product research with competitive analysis; assessed product viability and provided data-driven recommendations to leadership.</li>
+          <li>Led user research/testing, uncovering <strong>30+ critical UX issues</strong> and delivering actionable insights to refine the product roadmap.</li>
+        </ul>
+      </li>
+      <li>
+        <div><strong>Continental Automotive — Product Management Intern</strong></div>
+        <div class="meta">Bangalore, India · Jun 2024 – Sep 2024</div>
+        <ul>
+          <li>Created user stories &amp; requirements specification for “GenAI for Service Desk,” defining scope and aligning roadmap goals to boost first contact resolution rates by a proposed <strong>45%</strong>.</li>
+          <li>Partnered with engineering to refine backlog prioritization; documented BA requirements, process flows, and features aligned to Agile practices.</li>
+          <li>Collaborated across engineering, design, and operations to modularize components and manage dependencies, risks, and timelines.</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>🌟 Leadership & Involvement</h2>
+    <ul class="timeline">
+      <li>
+        <div><strong>Association of Information Technologists (SSNCE)</strong> — Treasurer</div>
+        <div class="meta">Chennai, India · Aug 2024 – May 2025</div>
+        <div class="desc">Directed financial strategy across 10+ events with 10,000+ attendees; achieved <strong>30% cost savings</strong> via budget analysis &amp; vendor negotiation.</div>
+      </li>
+      <li>
+        <div><strong>Invente’24 Technical Symposium (SSNCE)</strong> — Sponsorship Lead</div>
+        <div class="meta">Chennai, India · Jul 2024 – Sep 2025</div>
+        <div class="desc">Designed a new sponsorship acquisition framework; mentored a team of 12 to secure 6 sponsorships, exceeding budget targets by <strong>60%</strong> and raising <strong>160%</strong> more than prior years.</div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>🧰 Technical Skills</h2>
+    <p><strong>Data &amp; Programming:</strong> Python, HTML/CSS, SQL, Tableau, Visio (process flows)<br>
+       <strong>Business &amp; IT:</strong> Microsoft Office, JIRA, Agile, Product strategy, Documentation &amp; requirements gathering</p>
+  </section>
+
+  <section class="section">
+    <h2>🎓 Certifications</h2>
+    <div class="badges">
+      <span class="badge">🎓 Google Project Management</span>
+      <span class="badge">🎓 Google Data Analytics</span>
+      <span class="badge">🎓 McKinsey Forward Learners Program</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>💬 Languages & Hobbies</h2>
+    <p>Fluent in English, Hindi, and Tamil · Art · Mindfulness &amp; Yoga · Home Chef</p>
+  </section>
+
+  
+</article>
+
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2025 Srujana Srinivasan · Built with love ✨ · she/her · <a href="mailto:srusrini@iu.edu">srusrini@iu.edu</a></p>
+      <p>💗 <a href="https://github.com/srujana-srini/AiDD-srusrini-assignment5" target="_blank" rel="noopener">View source on GitHub</a> · 🌐 <a href="https://srujana-srini.github.io/AiDD-srusrini-assignment5/" target="_blank" rel="noopener">View live site</a></p>
+    </div>
+  </footer>
+  <script>
+    const btn = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('primary-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        menu.classList.toggle('open');
+      });
+    }
+  </script>
+</body>
+</html>

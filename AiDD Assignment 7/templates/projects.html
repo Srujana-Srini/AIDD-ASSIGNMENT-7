@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects &middot; Srujana Srinivasan</title>
+  <meta name="description" content="Srujana Srinivasan's portfolio, resume, projects, and contact.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="{{ url_for('home') }}" aria-label="Home">
+        <span class="brand-logo" aria-hidden="true">SS</span>
+        <span class="brand-text">Srujana Srinivasan</span>
+      </a>
+      <nav aria-label="Primary">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">Menu</button>
+        <ul id="primary-menu" class="nav-list">
+<li><a href="{{ url_for('home') }}">Home</a></li>
+<li><a href="{{ url_for('about') }}">About Me</a></li>
+<li><a href="{{ url_for('resume') }}">Resume</a></li>
+<li><a href="{{ url_for('projects') }}" class="active">Projects</a></li>
+<li><a href="{{ url_for('contact') }}">Contact</a></li>
+</ul>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    
+<section class="prose">
+  <div class="section-title">
+    <img src="{{ url_for('static', filename='images/sparkle.svg') }}" alt="" aria-hidden="true">
+    <h1>Projects</h1>
+  </div>
+  <p>Browse current projects pulled directly from the portfolio database or add a new one using the form below.</p>
+</section>
+
+<section class="section">
+  <form method="post" action="{{ url_for('projects') }}" novalidate>
+    <h2>Add a Project</h2>
+    <div class="form-row">
+      <label for="title">Project Title</label>
+      <input id="title" name="title" type="text" value="{{ form_data.title }}" required aria-describedby="titleHint">
+      <small id="titleHint" class="hint">Appears as the project heading.</small>
+      <span class="error" aria-live="polite">{{ errors['title'] if errors and 'title' in errors else '' }}</span>
+    </div>
+
+    <div class="form-row">
+      <label for="description">Short Description</label>
+      <textarea id="description" name="description" rows="4" required aria-describedby="descriptionHint">{{ form_data.description }}</textarea>
+      <small id="descriptionHint" class="hint">Summarize the project in a few sentences.</small>
+      <span class="error" aria-live="polite">{{ errors['description'] if errors and 'description' in errors else '' }}</span>
+    </div>
+
+    <div class="form-row">
+      <label for="image_filename">Image File Name</label>
+      <input id="image_filename" name="image_filename" type="text" value="{{ form_data.image_filename }}" required aria-describedby="imageHint">
+      <small id="imageHint" class="hint">Example: <code>icon_music.svg</code> (stored in <code>static/images</code>).</small>
+      <span class="error" aria-live="polite">{{ errors['image_filename'] if errors and 'image_filename' in errors else '' }}</span>
+    </div>
+
+    <button class="btn" type="submit">Save Project</button>
+  </form>
+</section>
+
+<section class="section">
+  <table class="projects-table">
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% if projects %}
+      {% for project in projects %}
+      <tr>
+        <td>
+          <img src="{{ url_for('static', filename='images/' ~ project['image_filename']) }}" alt="{{ project['title'] }} image" class="project-thumb">
+        </td>
+        <td>{{ project['title'] }}</td>
+        <td>{{ project['description'] }}</td>
+        <td>
+          <form method="post" action="{{ url_for('remove_project', project_id=project['id']) }}">
+            <button type="submit" class="btn btn-secondary">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    {% else %}
+      <tr>
+        <td colspan="4">No projects yet. Add your first project from the form page.</td>
+      </tr>
+    {% endif %}
+    </tbody>
+  </table>
+</section>
+
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2025 Srujana Srinivasan &middot; Built with love &middot; she/her &middot; <a href="mailto:srusrini@iu.edu">srusrini@iu.edu</a></p>
+      <p>&rarr; <a href="https://github.com/srujana-srini/AiDD-srusrini-assignment5" target="_blank" rel="noopener">View source on GitHub</a> &middot; &rarr; <a href="https://srujana-srini.github.io/AiDD-srusrini-assignment5/" target="_blank" rel="noopener">View live site</a></p>
+    </div>
+  </footer>
+  <script>
+    const btn = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('primary-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        menu.classList.toggle('open');
+      });
+    }
+  </script>
+</body>
+</html>

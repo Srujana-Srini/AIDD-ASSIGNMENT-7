@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home · Srujana Srinivasan</title>
+  <meta name="description" content="Srujana Srinivasan — portfolio, resume, projects, and contact.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Home">
+        <span class="brand-logo" aria-hidden="true">SS</span>
+        <span class="brand-text">Srujana Srinivasan</span>
+      </a>
+      <nav aria-label="Primary">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">Menu</button>
+        <ul id="primary-menu" class="nav-list">
+<li><a href="{{ url_for('home') }}">Home</a></li>
+<li><a href="{{ url_for('about') }}">About Me</a></li>
+<li><a href="{{ url_for('resume') }}">Resume</a></li>
+<li><a href="{{ url_for('projects') }}">Projects</a></li>
+<li><a href="{{ url_for('contact') }}">Contact</a></li>
+</ul>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    
+<section class="hero">
+  <div>
+    <h1>✨ Hi, I’m Srujana — building thoughtful, AI-powered products that empower people ✨</h1>
+    <p class="kawaii">MSIS @ Kelley · Product Strategy &amp; AI · she/her</p>
+    <div class="divider"><img src="{{ url_for('static', filename='images/') }}sparkle.svg" alt="sparkle divider"></div>
+    <div class="cta-row">
+      <a class="btn" href="{{ url_for('projects') }}">Explore Projects</a>
+      <a class="btn btn-secondary" href="{{ url_for('resume') }}">View Resume</a>
+      <a class="btn" href="{{ url_for('contact') }}">Say Hello</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <img src="{{ url_for('static', filename='images/') }}avatar_placeholder.png" alt="Srujana headshot with soft pastel circular frame." width="360" height="360">
+  </div>
+</section>
+
+<section class="cards">
+  <article class="card">
+    <h2>💖 What I care about</h2>
+    <p>Human-centered AI, inclusive design, measurable outcomes, and honest storytelling in products.</p>
+  </article>
+  <article class="card">
+    <h2>🌱 Currently</h2>
+    <p>MSIS candidate (Dec 2026) at Indiana University; Director of Communications — Digital Transformation &amp; AI Club; MSIS Student Ambassador.</p>
+  </article>
+  <article class="card">
+    <h2>📬 Submission Links</h2>
+    <p><a class="btn" href="https://github.com/srujana-srini/AiDD-srusrini-assignment5" target="_blank" rel="noopener">View Repository on GitHub</a> <a class="btn btn-secondary" href="https://srujana-srini.github.io/AiDD-srusrini-assignment5/" target="_blank" rel="noopener">View Live Site</a></p>
+  </article>
+</section>
+
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2025 Srujana Srinivasan · Built with love ✨ · she/her · <a href="mailto:srusrini@iu.edu">srusrini@iu.edu</a></p>
+      <p>💗 <a href="https://github.com/srujana-srini/AiDD-srusrini-assignment5" target="_blank" rel="noopener">View source on GitHub</a> · 🌐 <a href="https://srujana-srini.github.io/AiDD-srusrini-assignment5/" target="_blank" rel="noopener">View live site</a></p>
+    </div>
+  </footer>
+  <script>
+    const btn = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('primary-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        menu.classList.toggle('open');
+      });
+    }
+  </script>
+</body>
+</html>

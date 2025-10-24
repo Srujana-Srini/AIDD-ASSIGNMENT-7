@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact &middot; Srujana Srinivasan</title>
+  <meta name="description" content="Srujana Srinivasan's portfolio contact page.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="{{ url_for('home') }}" aria-label="Home">
+        <span class="brand-logo" aria-hidden="true">SS</span>
+        <span class="brand-text">Srujana Srinivasan</span>
+      </a>
+      <nav aria-label="Primary">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">Menu</button>
+        <ul id="primary-menu" class="nav-list">
+<li><a href="{{ url_for('home') }}">Home</a></li>
+<li><a href="{{ url_for('about') }}">About Me</a></li>
+<li><a href="{{ url_for('resume') }}">Resume</a></li>
+<li><a href="{{ url_for('projects') }}">Projects</a></li>
+<li><a href="{{ url_for('contact') }}" class="active">Contact</a></li>
+</ul>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    
+<section class="prose">
+  <div class="section-title">
+    <img src="{{ url_for('static', filename='images/sparkle.svg') }}" alt="" aria-hidden="true">
+    <h1>Contact</h1>
+  </div>
+  <p>Email me at <a href="mailto:srusrini@iu.edu">srusrini@iu.edu</a> &middot; Connect on <a href="https://www.linkedin.com/in/srujana-srinivasan/" target="_blank" rel="noopener">LinkedIn</a></p>
+  <h2>Send a message</h2>
+  <form id="contactForm" method="post" novalidate>
+    <div class="form-row">
+      <label for="firstName">First Name</label>
+      <input id="firstName" name="firstName" type="text" required aria-describedby="firstNameHelp">
+      <small id="firstNameHelp" class="hint">Required.</small>
+      <span class="error" id="firstNameError" aria-live="polite"></span>
+    </div>
+    <div class="form-row">
+      <label for="lastName">Last Name</label>
+      <input id="lastName" name="lastName" type="text" required aria-describedby="lastNameHelp">
+      <small id="lastNameHelp" class="hint">Required.</small>
+      <span class="error" id="lastNameError" aria-live="polite"></span>
+    </div>
+    <div class="form-row">
+      <label for="email">Email Address</label>
+      <input id="email" name="email" type="email" required aria-describedby="emailHelp">
+      <small id="emailHelp" class="hint">Must be a valid email.</small>
+      <span class="error" id="emailError" aria-live="polite"></span>
+    </div>
+    <div class="form-row">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" minlength="8" required aria-describedby="passwordHelp">
+      <small id="passwordHelp" class="hint">At least 8 characters.</small>
+      <span class="error" id="passwordError" aria-live="polite"></span>
+    </div>
+    <div class="form-row">
+      <label for="confirmPassword">Confirm Password</label>
+      <input id="confirmPassword" name="confirmPassword" type="password" minlength="8" required aria-describedby="confirmPasswordHelp">
+      <small id="confirmPasswordHelp" class="hint">Must match the password.</small>
+      <span class="error" id="confirmPasswordError" aria-live="polite"></span>
+    </div>
+    <button class="btn" type="submit">Send Message</button>
+  </form>
+</section>
+
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2025 Srujana Srinivasan &middot; Built with love &middot; she/her &middot; <a href="mailto:srusrini@iu.edu">srusrini@iu.edu</a></p>
+      <p>&rarr; <a href="https://github.com/srujana-srini/AiDD-srusrini-assignment5" target="_blank" rel="noopener">View source on GitHub</a> &middot; &rarr; <a href="https://srujana-srini.github.io/AiDD-srusrini-assignment5/" target="_blank" rel="noopener">View live site</a></p>
+    </div>
+  </footer>
+  <script>
+    const btn = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('primary-menu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        menu.classList.toggle('open');
+      });
+    }
+
+    const form = document.getElementById('contactForm');
+    const fields = ['firstName', 'lastName', 'email', 'password', 'confirmPassword'];
+
+    function setError(id, message) {
+      const el = document.getElementById(id + 'Error');
+      if (el) {
+        el.textContent = message || '';
+      }
+    }
+
+    function clearErrors() {
+      fields.forEach((f) => setError(f, ''));
+    }
+
+    if (form) {
+      form.addEventListener('submit', (event) => {
+        clearErrors();
+        let valid = true;
+
+        const first = document.getElementById('firstName');
+        const last = document.getElementById('lastName');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const confirm = document.getElementById('confirmPassword');
+
+        if (!first.value.trim()) {
+          setError('firstName', 'Please enter your first name.');
+          valid = false;
+        }
+
+        if (!last.value.trim()) {
+          setError('lastName', 'Last name is required.');
+          valid = false;
+        }
+
+        if (!email.validity.valid) {
+          setError('email', 'Enter a valid email address.');
+          valid = false;
+        }
+
+        if (!password.value || password.value.length < 8) {
+          setError('password', 'Password must be at least 8 characters.');
+          valid = false;
+        }
+
+        if (confirm.value !== password.value) {
+          setError('confirmPassword', 'Passwords must match.');
+          valid = false;
+        }
+
+        if (!valid) {
+          event.preventDefault();
+          return;
+        }
+
+        event.preventDefault();
+        window.location.href = '{{ url_for('thankyou') }}';
+      });
+    }
+  </script>
+</body>
+</html>
